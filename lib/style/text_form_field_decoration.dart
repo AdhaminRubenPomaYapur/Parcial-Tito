@@ -7,6 +7,6 @@ const TextStyle kHeading = TextStyle(
 );
 
 const TextStyle kBodyText = TextStyle( 
-  fontSize: 22, 
+  fontSize: 20, 
   color: Colors.white
 );

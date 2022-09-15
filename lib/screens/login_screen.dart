@@ -15,13 +15,15 @@ class LoginScreen extends StatelessWidget {
         const BackgroundImage(),
         Scaffold(
           backgroundColor: Colors.transparent,
-          body: SafeArea(
-            child: Column(
-              children: const [
-                TitleLogin(),
-                SizedBox( height: 100,),
-                _InputLoginWidget()
-              ],
+          body: SingleChildScrollView(
+            child: SafeArea(
+              child: Column(
+                children: const [
+                  TitleLogin(),
+                  SizedBox( height: 120,),
+                  _InputLoginWidget()
+                ],
+              ),
             ),
           ),
         )
@@ -87,7 +89,8 @@ class _InputLoginWidget extends StatelessWidget {
                   )
                 ),
                 child: const Text('Create New Account', style: kBodyText,),
-              )
+              ),
+              const SizedBox( height: 50,)
             ],
           )
         ],
