@@ -24,18 +24,18 @@ class ContactResponse {
     final String address;
 
     factory ContactResponse.fromJson(Map<String, dynamic> json) => ContactResponse(
-        id: json["id"],
+        id      : json["id"],
         fullName: json["fullName"],
-        email: json["email"],
-        phone: json["phone"],
-        address: json["address"],
+        email   : json["email"],
+        phone   : json["phone"],
+        address : json["address"],
     );
 
     Map<String, dynamic> toJson() => {
-        "id": id,
+        "id"      : id,
         "fullName": fullName,
-        "email": email,
-        "phone": phone,
-        "address": address,
+        "email"   : email,
+        "phone"   : phone,
+        "address" : address,
     };
 }

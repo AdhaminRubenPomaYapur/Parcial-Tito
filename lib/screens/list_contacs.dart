@@ -12,6 +12,12 @@ class ListContacts extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('List Contacts'),
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.pushNamed(context, 'postContacts'), 
+            icon: const Icon(Icons.add)
+          )
+        ],
       ),
       body: SafeArea(
         child: Container(
