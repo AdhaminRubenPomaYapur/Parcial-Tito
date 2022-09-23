@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:parcial_flutter_testing/screens/screens.dart';
+import 'package:parcial_flutter_testing/routes/app_route.dart';
+
 
 void main() => runApp(const MyApp());
 
@@ -8,10 +9,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: LoginScreen()
+      initialRoute: 'login',
+      routes: AppRoute.getRoutes(),
     );
   }
 }
