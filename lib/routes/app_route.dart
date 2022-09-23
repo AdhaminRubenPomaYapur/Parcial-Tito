@@ -11,7 +11,6 @@ class AppRoute {
     MenuOption(route: 'listContacts',     screen: const ListContacts()),
     MenuOption(route: 'postContacts',     screen: const PostContact()),
     MenuOption(route: 'putContacts',      screen: const PutContact()),
-    MenuOption(route: 'deleteContacts',   screen: const DeleteContact()),
   ];
 
   static Map<String, Widget Function(BuildContext)> getRoutes() {

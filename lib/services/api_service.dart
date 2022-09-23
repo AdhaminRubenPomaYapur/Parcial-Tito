@@ -30,4 +30,36 @@ class ApiService {
     
     return;
   }
+
+  Future<void> updateContact(ContactResponse contactResponse) async {
+    
+    await http.put(
+      Uri.parse('$_baseUrl/${contactResponse.id}'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: jsonEncode({
+        "fullName": contactResponse.fullName,
+        "email"   : contactResponse.email,
+        "phone"   : contactResponse.phone,
+        "address" : contactResponse.address
+      })
+    );
+    
+    return;
+  }
+
+  Future<void> deleteContact(String? id) async {
+    
+    await http.delete(
+      Uri.parse('$_baseUrl/$id'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    );
+    
+    return;
+  }
 }

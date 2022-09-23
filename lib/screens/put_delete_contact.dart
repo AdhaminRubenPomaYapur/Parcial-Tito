@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:parcial_flutter_testing/models/contacts_response.dart';
 import 'package:parcial_flutter_testing/models/models.dart';
 import 'package:parcial_flutter_testing/services/api_service.dart';
 import 'package:parcial_flutter_testing/widgets/widgets.dart';
@@ -41,7 +40,7 @@ class PutContact extends StatelessWidget {
               child: Column(
                 children: [
                   const Divider( height: 20,),
-                  const Text('Create Data', style: TextStyle( fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white ),),
+                  const Text('Management', style: TextStyle( fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white ),),
                   const Divider( height: 30,),
                   CustomTextFormField(
                     initialValue  : contact.fullName,
@@ -75,29 +74,50 @@ class PutContact extends StatelessWidget {
                     validator: (value) => Validator.validatorAddress(value),
                   ),
                   const Divider( height: 50,),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.black45,
-                    ),
-                    width: 250,
-                    height: 60,
-                    child: TextButton(
-                      onPressed: () {
-                        if(addFormKey.currentState?.validate() ?? false){
-                          apiService.createContact(
-                            ContactResponse(
-                              fullName : contact.fullName,
-                              email    : contact.email,
-                              phone    : contact.phone, 
-                              address  : contact.email
-                            )
-                          );
-                          Navigator.pushReplacementNamed(context, 'listContacts');
-                        }
-                      },
-                      child: const Text('Create', style: TextStyle( fontSize: 24, color: Colors.white ),),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.blue[900],
+                        ),
+                        width: 150,
+                        height: 60,
+                        child: TextButton(
+                          onPressed: () {
+                            if(addFormKey.currentState?.validate() ?? false){
+                              apiService.updateContact(
+                                ContactResponse(
+                                  fullName : contact.fullName,
+                                  email    : contact.email,
+                                  phone    : contact.phone, 
+                                  address  : contact.email
+                                )
+                              );
+                              Navigator.pushReplacementNamed(context, 'listContacts');
+                            }
+                          },
+                          child: const Text('Update', style: TextStyle( fontSize: 24, color: Colors.white ),),
+                        ),
+                      ),
+                      const SizedBox( width: 10,),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.red,
+                        ),
+                        width: 150,
+                        height: 60,
+                        child: TextButton(
+                          onPressed: () {
+                              apiService.deleteContact(contact.id);
+                              Navigator.pushReplacementNamed(context, 'listContacts');
+                          },
+                          child: const Text('Delete', style: TextStyle( fontSize: 24, color: Colors.white ),),
+                        ),
+                      ),
+                    ],
                   ),
                   const Divider( height: 20,),
                 ],
