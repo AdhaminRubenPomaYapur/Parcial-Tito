@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:parcial_flutter_testing/models/contacts_response.dart';
+import 'package:parcial_flutter_testing/models/models.dart';
+import 'package:parcial_flutter_testing/services/api_service.dart';
 import 'package:parcial_flutter_testing/widgets/widgets.dart';
 
 class PutContact extends StatelessWidget {
@@ -9,16 +11,14 @@ class PutContact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    TextEditingController _fullNameController = TextEditingController();
-    TextEditingController _emailController    = TextEditingController();
-    TextEditingController _phoneController    = TextEditingController();
-    TextEditingController _addressController  = TextEditingController();
+    ApiService apiService = ApiService();
+    GlobalKey<FormState>  addFormKey        = GlobalKey<FormState>();
 
-    final ContactResponse contact = ModalRoute.of(context)!.settings.arguments as ContactResponse;
+    ContactResponse contact = ModalRoute.of(context)?.settings.arguments as ContactResponse;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Update contact'),
+        title: const Text('Create contact'),
       ),
       body: Container(
         clipBehavior: Clip.antiAlias,
@@ -32,59 +32,77 @@ class PutContact extends StatelessWidget {
           )
         ),
         margin: const EdgeInsets.symmetric( horizontal: 20, vertical: 30 ),
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          color: Colors.black12,
-          child: Form(
-            child: Column(
-              children: [
-                const Divider( height: 20,),
-                const Text('Updated Data', style: TextStyle( fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white ),),
-                const Divider( height: 30,),
-                CustomTextFormField(
-                  controller    : _fullNameController,
-                  label         : 'Full Name',
-                  icon          : Icons.people_alt_outlined,
-                  initialValue  : contact.fullName,
-                ),
-                const Divider( height: 30,),
-                CustomTextFormField(
-                  controller    : _emailController,
-                  label         : 'Email',
-                  icon          : Icons.email_outlined,
-                  initialValue  : contact.email,
-                ),
-                const Divider( height: 30,),
-                CustomTextFormField(
-                  controller    : _phoneController,
-                  label         : 'Phone',
-                  icon          : Icons.phone,
-                  initialValue  : contact.phone.toString(),
-                ),
-                const Divider( height: 30,),
-                CustomTextFormField(
-                  controller    : _addressController,
-                  label         : 'Address',
-                  icon          : Icons.house_outlined,
-                  initialValue  : contact.address,
-                ),
-                const Divider( height: 50,),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.black45,
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            color: Colors.black12,
+            child: Form(
+              key: addFormKey,
+              child: Column(
+                children: [
+                  const Divider( height: 20,),
+                  const Text('Create Data', style: TextStyle( fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white ),),
+                  const Divider( height: 30,),
+                  CustomTextFormField(
+                    initialValue  : contact.fullName,
+                    label         : 'Full Name',
+                    icon          : Icons.people_alt_outlined,
+                    onChanged: (value) => contact.fullName = value,
+                    validator: (value) => Validator.validatorName(value),
                   ),
-                  width: 250,
-                  height: 60,
-                  child: TextButton(
-                    onPressed: () {
-
-                    },
-                    child: const Text('Update', style: TextStyle( fontSize: 24, color: Colors.white ),),
+                  const Divider( height: 30,),
+                  CustomTextFormField(
+                    initialValue  : contact.email,
+                    label         : 'Email',
+                    icon          : Icons.email_outlined,
+                    onChanged: (value) => contact.email = value,
+                    validator: (value) => Validator.validatorEmail(value),
                   ),
-                )
-              ],
-            )
+                  const Divider( height: 30,),
+                  CustomTextFormField(
+                    initialValue  : contact.phone.toString(),
+                    label         : 'Phone',
+                    icon          : Icons.phone,
+                    onChanged: (value) => contact.phone = int.parse(value),
+                    validator: (value) => Validator.validatorPhoneNumer(value),
+                  ),
+                  const Divider( height: 30,),
+                  CustomTextFormField(
+                    initialValue  : contact.address,
+                    label         : 'Address',
+                    icon          : Icons.house_outlined,
+                    onChanged: (value) => contact.address = value,
+                    validator: (value) => Validator.validatorAddress(value),
+                  ),
+                  const Divider( height: 50,),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.black45,
+                    ),
+                    width: 250,
+                    height: 60,
+                    child: TextButton(
+                      onPressed: () {
+                        if(addFormKey.currentState?.validate() ?? false){
+                          apiService.createContact(
+                            ContactResponse(
+                              fullName : contact.fullName,
+                              email    : contact.email,
+                              phone    : contact.phone, 
+                              address  : contact.email
+                            )
+                          );
+                          Navigator.pushReplacementNamed(context, 'listContacts');
+                        }
+                      },
+                      child: const Text('Create', style: TextStyle( fontSize: 24, color: Colors.white ),),
+                    ),
+                  ),
+                  const Divider( height: 20,),
+                ],
+              )
+            ),
           ),
         )
       )

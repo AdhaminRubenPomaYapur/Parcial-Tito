@@ -12,25 +12,22 @@ class ApiService {
     return contactResponse;
   }
 
-  Future<ContactResponse> createContact(ContactResponse contactResponse) async {
+  Future<void> createContact(ContactResponse contactResponse) async {
     
-    Map data = {
-      "id"      : contactResponse.id,
-      "fullName": contactResponse.fullName,
-      "email"   : contactResponse.email,
-      "phone"   : contactResponse.phone,
-      "address" : contactResponse.address,
-    };
-
-    final response = await http.post(
+    await http.post(
       Uri.parse(_baseUrl),
-      body: jsonEncode(data)
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: jsonEncode({
+        "fullName": contactResponse.fullName,
+        "email"   : contactResponse.email,
+        "phone"   : contactResponse.phone,
+        "address" : contactResponse.address
+      })
     );
     
-    if(response.statusCode == 200){
-      return ContactResponse.fromJson(json.decode(response.body));
-    } else {
-      throw Exception('Failed to created Contact');
-    }
+    return;
   }
 }

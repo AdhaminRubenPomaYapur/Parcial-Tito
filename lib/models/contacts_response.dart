@@ -10,14 +10,19 @@ String contactResponseToJson(List<ContactResponse> data) => json.encode(List<dyn
 
 class ContactResponse {
     ContactResponse({
-        required this.id,
+        this.id,
         required this.fullName,
         required this.email,
         required this.phone,
         required this.address,
     });
 
-    final String id;
+    set fullName(String fullname) => fullName = fullname;
+    set email   (String email)    => email    = email;
+    set phone   (int    phone)    => phone    = phone;
+    set address (String address)  => address  = address;
+
+    final String? id;
     final String fullName;
     final String email;
     final int phone;

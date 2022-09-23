@@ -4,16 +4,18 @@ class CustomTextFormField extends StatelessWidget {
 
   final String label;
   final IconData icon;
-  final String? initialValue;
-  final TextEditingController controller;
+  final String initialValue;
+  final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
 
 
   const CustomTextFormField({
     Key? key, 
     required this.label,
     required this.icon, 
-    this.initialValue, 
-    required this.controller, 
+    required this.initialValue, 
+    this.onChanged, 
+    this.validator, 
   }) : super(key: key);
 
   @override
@@ -25,8 +27,10 @@ class CustomTextFormField extends StatelessWidget {
         color: Colors.white24,
       ),
       child: TextFormField(
-        controller: controller,
-        initialValue: initialValue ?? '',
+        onChanged: onChanged,
+        validator: validator,
+        initialValue: initialValue,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
           icon  : Icon(icon, color: Colors.white,),
           label : Text(label, style: const TextStyle( color: Colors.white),),

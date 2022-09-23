@@ -40,7 +40,7 @@ class ListContacts extends StatelessWidget {
                   return ListTile(
                     leading: const Icon(Icons.people),
                     title: Text(contacts[index].fullName),
-                    trailing: const Icon(Icons.arrow_forward_sharp),
+                    trailing: const Icon(Icons.edit),
                     onTap: () => Navigator.pushNamed(context, 'putContacts', arguments: contacts[index]),
                   );
                 },
