@@ -4,11 +4,13 @@ import 'package:parcial_flutter_testing/style/text_form_field_decoration.dart';
 
 class CustomTextFormFieldLogin extends StatelessWidget {
 
-  final IconData          icon;
-  final String            hintext;
-  final TextInputType?     keyboardType;
-  final TextInputAction   textInputAction;
-  final bool?             obscureText;
+  final IconData                    icon;
+  final String                      hintext;
+  final TextInputType?              keyboardType;
+  final TextInputAction             textInputAction;
+  final bool?                       obscureText;
+  final String? Function(String?)?  validator;
+  final TextEditingController?      controller;
 
   const CustomTextFormFieldLogin({
     Key? key, 
@@ -16,7 +18,9 @@ class CustomTextFormFieldLogin extends StatelessWidget {
     required this.hintext, 
     this.keyboardType, 
     required this.textInputAction, 
-    this.obscureText,
+    this.obscureText, 
+    this.validator, 
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -44,9 +48,11 @@ class CustomTextFormFieldLogin extends StatelessWidget {
             hintStyle: kBodyText,
           ),
           style: kBodyText,
+          controller: controller,
           keyboardType: keyboardType,
           textInputAction: textInputAction,
           obscureText: obscureText ?? false,
+          validator: validator,
         ),
       ),
     );
