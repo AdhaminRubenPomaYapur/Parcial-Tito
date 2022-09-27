@@ -32,6 +32,7 @@ class _ListContactsState extends State<ListContacts> {
             child: FutureBuilder(
               future: ApiService().requestGet(),
               builder: (BuildContext context, AsyncSnapshot<List<ContactResponse>> snapshot) {
+                
                 if(!snapshot.hasData){
                   return const Center(
                     child: CircularProgressIndicator(),
