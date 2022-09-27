@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:parcial_flutter_testing/models/contacts_response.dart';
 import 'package:parcial_flutter_testing/models/models.dart';
 import 'package:parcial_flutter_testing/services/api_service.dart';
 import 'package:parcial_flutter_testing/widgets/widgets.dart';
@@ -95,7 +94,7 @@ class PostContact extends StatelessWidget {
                               address  : address
                             )
                           );
-                          Navigator.pushReplacementNamed(context, 'listContacts');
+                          Navigator.pushNamed(context, 'listContacts');
                         }
                       },
                       child: const Text('Create', style: TextStyle( fontSize: 24, color: Colors.white ),),

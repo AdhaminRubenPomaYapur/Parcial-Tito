@@ -17,8 +17,9 @@ class ButtomLogin extends StatelessWidget {
         borderRadius: BorderRadius.circular(16)
       ),
       child: TextButton(
+        key: const ValueKey(""),
         onPressed: () {
-          Navigator.pushNamed(context, 'listContacts');
+          Navigator.pushReplacementNamed(context, 'listContacts');
         }, 
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),

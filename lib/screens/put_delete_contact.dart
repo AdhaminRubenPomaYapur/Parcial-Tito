@@ -92,10 +92,10 @@ class PutContact extends StatelessWidget {
                                   fullName : contact.fullName,
                                   email    : contact.email,
                                   phone    : contact.phone, 
-                                  address  : contact.email
+                                  address  : contact.address
                                 )
                               );
-                              Navigator.pushReplacementNamed(context, 'listContacts');
+                              Navigator.pushNamed(context, 'listContacts');
                             }
                           },
                           child: const Text('Update', style: TextStyle( fontSize: 24, color: Colors.white ),),
@@ -112,7 +112,7 @@ class PutContact extends StatelessWidget {
                         child: TextButton(
                           onPressed: () {
                               apiService.deleteContact(contact.id);
-                              Navigator.pushReplacementNamed(context, 'listContacts');
+                              Navigator.pushNamed(context, 'listContacts');
                           },
                           child: const Text('Delete', style: TextStyle( fontSize: 24, color: Colors.white ),),
                         ),
