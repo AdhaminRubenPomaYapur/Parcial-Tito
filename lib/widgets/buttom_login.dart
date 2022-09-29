@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:parcial_flutter_testing/style/text_form_field_decoration.dart';
 class ButtomLogin extends StatelessWidget {
   final String buttonText;
-  
+  final GlobalKey<FormState> formKey;
   const ButtomLogin({
     Key? key, 
-    required this.buttonText,
+    required this.buttonText, 
+    required this.formKey,
   }) : super(key: key);
 
   @override
@@ -17,7 +18,11 @@ class ButtomLogin extends StatelessWidget {
         borderRadius: BorderRadius.circular(16)
       ),
       child: TextButton(
-        onPressed: () {}, 
+        onPressed: () {
+          if(formKey.currentState?.validate() ?? true) {
+            Navigator.pushReplacementNamed(context, 'profile');
+          }
+        }, 
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Text(
