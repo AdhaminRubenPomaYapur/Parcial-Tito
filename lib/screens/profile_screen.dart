@@ -8,16 +8,19 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  bool _switchCurrentValue = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor:Colors.black,
-      body: Container(
-        decoration: BoxDecoration(
+        //backgroundColor:Colors.black,
+        body: SingleChildScrollView(
+      child: Container(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: NetworkImage(
               'https://i.pinimg.com/originals/f5/20/da/f520dab6c667e0fe37134be9c2dc08f6.jpg'),
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         )),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -32,7 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     radius: 80,
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
                 const Text.rich(TextSpan(
                     text: 'Lionel Messi 10\n',
                     style: TextStyle(fontSize: 30, color: Colors.white),
@@ -41,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           text: 'Lionel Messi The best Player',
                           style: TextStyle(fontSize: 10))
                     ])),
-                const SizedBox(height: 80),
+                const SizedBox(height: 50),
                 MaterialButton(
                   onPressed: () {},
                   shape: RoundedRectangleBorder(
@@ -55,12 +58,81 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     "Edit profile",
                     style: TextStyle(color: Colors.white),
                   ),
-                )
+                ),
+                const SizedBox(height: 60),
+                Card(
+                  color: Color.fromARGB(255, 53, 130, 194),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  margin: EdgeInsets.all(30),
+                  elevation: 10,
+                  child: Column(
+                    children: [
+                      const ListTile(
+                        contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                        title: Text('Turn on Notifications'),
+                        textColor: Colors.white,
+                        leading: Icon(
+                          Icons.music_note_outlined,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text('hola'),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Card(
+                  color: Color.fromARGB(255, 53, 130, 194),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  margin: EdgeInsets.all(30),
+                  elevation: 10,
+                  child: Column(
+                    children: [
+                      const ListTile(
+                        contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                        title: Text('Turn on Notifications'),
+                        textColor: Colors.white,
+                        leading: Icon(
+                          Icons.music_note_outlined,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Switch(
+                            value: _switchCurrentValue,
+                            onChanged: (bool valueIn) {
+                              setState(() {
+                                _switchCurrentValue = valueIn;
+                              });
+                            },
+                            focusColor: Colors.amber,
+                            activeColor: Colors.green,
+                            inactiveTrackColor: Colors.red,
+                            hoverColor: Colors.amber,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
-    );
+    ));
   }
 }
