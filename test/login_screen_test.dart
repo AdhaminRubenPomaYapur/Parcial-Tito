@@ -60,4 +60,23 @@ void main() {
     expect(emailEmpty, findsOneWidget);
     expect(passwordEmpty, findsOneWidget);
   });
+
+  testWidgets('should view profile screen', (WidgetTester tester) async {
+    await tester.pumpWidget(  
+      MaterialApp(
+        initialRoute: 'login',
+        routes: AppRoute.getRoutes(),
+      )
+    );
+    Finder textButton    = find.byType(TextButton);
+    await tester.tap(textButton);
+    await tester.pumpAndSettle();
+
+    Finder emailEmpty    = find.text('email null or empty');
+    Finder passwordEmpty = find.text('password null or empty');
+
+    await tester.pumpAndSettle();
+    expect(emailEmpty, findsOneWidget);
+    expect(passwordEmpty, findsOneWidget);
+  });
 }
