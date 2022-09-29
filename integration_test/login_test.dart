@@ -30,16 +30,16 @@ void main() {
           routes: AppRoute.getRoutes(),
         )
       );
+      Finder emailTextField    = find.byKey(const ValueKey('email_id'));
+      Finder passwordTextField = find.byKey(const ValueKey('password_id'));
+
+      await tester.enterText(emailTextField,    'adhamin055@gmail.com');
+      await tester.enterText(passwordTextField, 'password123');
+
       Finder textButton    = find.byType(TextButton);
       await tester.tap(textButton);
       await tester.pumpAndSettle( const Duration( seconds: 2 ));
 
-      Finder emailEmpty    = find.text('email null or empty');
-      Finder passwordEmpty = find.text('password null or empty');
-
-      await tester.pumpAndSettle( const Duration( seconds: 2 ));
-      expect(emailEmpty, findsOneWidget);
-      expect(passwordEmpty, findsOneWidget);
     });
   });
 }
