@@ -38,7 +38,7 @@ class Validator {
     if(value?.isEmpty ?? true){
       return 'price null or empty';
     }
-    String pattern = r'^[0-9.,]{0,6}$';
+    String pattern = r'^[0-9.]{0,6}$';
     RegExp regExp = RegExp(pattern);
     return regExp.hasMatch(value ?? '') ? null : 'Introduce un precio valido';
   }

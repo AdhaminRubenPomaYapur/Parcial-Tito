@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parcial_flutter_testing/widgets/back_ground_image.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -17,9 +18,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         body: SingleChildScrollView(
       child: Container(
         decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: NetworkImage(
-              'https://i.pinimg.com/originals/f5/20/da/f520dab6c667e0fe37134be9c2dc08f6.jpg'),
+          image: DecorationImage(
+            image: AssetImage('assets/background.jpg'),
           fit: BoxFit.fill,
         )),
         child: Padding(
