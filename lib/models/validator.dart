@@ -7,15 +7,6 @@ class Validator {
     required this.password
   });
 
-  static String? validatorName(String? value){
-    if(value?.isEmpty ?? true){
-      return 'name null or empty';
-    }
-    String pattern = r'^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$';
-    RegExp regExp = RegExp(pattern);
-    return regExp.hasMatch(value ?? '') ? null : 'Introduzca un nombre valido';
-  }
-
   static String? validatorEmail(String? value) {
     if(value?.isEmpty ?? true){
       return 'email null or empty';
@@ -34,22 +25,31 @@ class Validator {
     return regExp.hasMatch(value ?? '') ? null : 'Introduce un password valido';
   }
 
-  static String? validatorPhoneNumer(String? value){
+  static String? validatorName(String? value){
     if(value?.isEmpty ?? true){
-      return 'phone null or empty';
+      return 'name null or empty';
     }
-    String pattern = r'^[0-9]{8}$';
+    String pattern = r'^[a-zA-z0-9+ ]+$';
     RegExp regExp = RegExp(pattern);
-    return regExp.hasMatch(value ?? '') ? null : 'Introduce un telefono valido';
+    return regExp.hasMatch(value ?? '') ? null : 'Introduzca un nombre valido';
   }
 
-  static String? validatorAddress(String? value){
+  static String? validatorPrice(String? value){
     if(value?.isEmpty ?? true){
-      return 'address null or empty';
+      return 'price null or empty';
     }
-    String pattern = r'^[a-zA-Z./#0-9ñÑ ]+$';
+    String pattern = r'^[0-9.,]{0,6}$';
     RegExp regExp = RegExp(pattern);
-    return regExp.hasMatch(value ?? '') ? null : 'Introduzca una direccion valida';
+    return regExp.hasMatch(value ?? '') ? null : 'Introduce un precio valido';
+  }
+
+  static String? validatorStock(String? value){
+    if(value?.isEmpty ?? true){
+      return 'stock null or empty';
+    }
+    String pattern = r'^[0-9]{0,4}$';
+    RegExp regExp = RegExp(pattern);
+    return regExp.hasMatch(value ?? '') ? null : 'Introduce un stock valido';
   }
 
 }

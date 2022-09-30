@@ -32,29 +32,29 @@ void main() {
       expect(actual, 'name null or empty');
     });
     test('valid name', () {
-      final actual = Validator.validatorName('José Andrés Hurtado Vasquez');
+      final actual = Validator.validatorName('IPhone 7 plus');
       expect(actual, null);
     });
   });
 
-  group('validated phone', () {
-    test('phone null or empty', () {
-      final actual = Validator.validatorPhoneNumer('');
-      expect(actual, 'phone null or empty');
+  group('validated price', () {
+    test('price null or empty', () {
+      final actual = Validator.validatorPrice('');
+      expect(actual, 'price null or empty');
     });
-    test('valid phone fix eight digits', () {
-      final actual = Validator.validatorPhoneNumer('78964512');
+    test('valid price fix eight digits', () {
+      final actual = Validator.validatorPrice('789.3');
       expect(actual, null);
     });
   });
 
-  group('validated address', () {
-    test('address null or empty', () {
-      final actual = Validator.validatorAddress('');
-      expect(actual, 'address null or empty');
+  group('validated stock', () {
+    test('stock null or empty', () {
+      final actual = Validator.validatorStock('');
+      expect(actual, 'stock null or empty');
     });
-    test('valid address', () {
-      final actual = Validator.validatorAddress('Calle Añez. Av. Litoral #60');
+    test('valid stock', () {
+      final actual = Validator.validatorStock('7855');
       expect(actual, null);
     });
   });

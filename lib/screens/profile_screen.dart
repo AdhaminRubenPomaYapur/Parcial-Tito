@@ -46,7 +46,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ])),
                 const SizedBox(height: 50),
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'carrito');
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
                   disabledColor: Colors.grey,
@@ -55,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 80, vertical: 20),
                   child: const Text(
-                    "Edit profile",
+                    "Comprar",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

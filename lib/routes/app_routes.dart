@@ -8,6 +8,7 @@ class AppRoute {
     MenuOption(route: 'login',            screen: const LoginScreen()),
     MenuOption(route: 'dailyProgress',    screen: const DailyProgressScreen()),
     MenuOption(route: 'profile',          screen: const ProfileScreen()),
+    MenuOption(route: 'carrito',          screen: const CarritoCompras()),
   ];
 
   static Map<String, Widget Function(BuildContext)> getRoutes() {
