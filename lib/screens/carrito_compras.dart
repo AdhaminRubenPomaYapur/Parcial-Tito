@@ -18,6 +18,7 @@ class _CarritoComprasState extends State<CarritoCompras> {
   final stockController   = TextEditingController();
 
   List<Producto> listProduct = carrito.getItem();
+  late List<Producto> listCompra = [];
 
   void alertDialogAdd() {
     showDialog(
@@ -166,7 +167,70 @@ class _CarritoComprasState extends State<CarritoCompras> {
             }, 
             child: const Text('Eliminar')
           ),
+          TextButton(
+            onPressed: () {
+              listCompra.add(
+                Producto(
+                  id       : id, 
+                  producto : product, 
+                  precio   : double.parse(price), 
+                  stock    : int.parse(stock)
+                )
+              );
+              Navigator.pop(context);
+            }, 
+            child: const Text('Añadir')
+          ),
         ],
+      ),
+    );
+  }
+
+  void alertDialogBuy(List<Producto> listCompra) {
+
+    double total = 0;
+
+    for (final element in listCompra) {
+      total = total + element.precio;
+    }
+
+    showDialog(
+      context: context, 
+      builder: (context) => AlertDialog(
+        title: const Text('Compra del carrito'),
+        content: SizedBox(
+          width: 300,
+          height: 300,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(listCompra[index].producto),
+                      trailing: Text('${listCompra[index].precio}'),
+                    );
+                  },
+                  itemCount: listCompra.length,
+                ),
+              ),
+              const SizedBox( height: 20,),
+              Text('Precio total $total', style: const TextStyle( fontSize: 16, fontWeight: FontWeight.bold ),)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void alertDialogVoid(){
+    showDialog(
+      context: context, 
+      builder: (context) => const AlertDialog(
+        title: Text('No hay data'),
       ),
     );
   }
@@ -203,6 +267,16 @@ class _CarritoComprasState extends State<CarritoCompras> {
           itemCount: carrito.listProduct.length,
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if(listCompra.isEmpty){
+            alertDialogVoid();
+          } else {
+            alertDialogBuy(listCompra);
+          }
+        },
+        child: const Icon(Icons.list),
+      )
     );
   }
 }
