@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:parcial_flutter_testing/screens/screens.dart';
+import 'package:parcial_flutter_testing/routes/app_routes.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,9 +8,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Material App',
-        home: DailyProgressScreen());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: 'login',
+      routes: AppRoute.getRoutes(),
+    );
   }
 }

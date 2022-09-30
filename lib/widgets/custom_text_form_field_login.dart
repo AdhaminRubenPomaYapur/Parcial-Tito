@@ -9,6 +9,7 @@ class CustomTextFormFieldLogin extends StatelessWidget {
   final TextInputType?     keyboardType;
   final TextInputAction   textInputAction;
   final bool?             obscureText;
+  final String? Function(String?)? validator;
 
   const CustomTextFormFieldLogin({
     Key? key, 
@@ -16,7 +17,8 @@ class CustomTextFormFieldLogin extends StatelessWidget {
     required this.hintext, 
     this.keyboardType, 
     required this.textInputAction, 
-    this.obscureText,
+    this.obscureText, 
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -47,6 +49,7 @@ class CustomTextFormFieldLogin extends StatelessWidget {
           keyboardType: keyboardType,
           textInputAction: textInputAction,
           obscureText: obscureText ?? false,
+          validator: validator,
         ),
       ),
     );
