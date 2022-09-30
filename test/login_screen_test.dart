@@ -83,5 +83,9 @@ void main() {
 
     expect(emailEmpty, findsNothing);
     expect(passwordEmpty, findsNothing);
+
+    Finder textProfile = find.text('ProfileScreen');
+    expect(textProfile, findsOneWidget);
+
   });
 }
