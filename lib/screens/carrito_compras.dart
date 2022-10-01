@@ -35,6 +35,7 @@ class _CarritoComprasState extends State<CarritoCompras> {
               children: [
                 Text('id: ${listProduct.length + 1}'),
                 TextFormField(
+                  key: const ValueKey('product_id'),
                   decoration: const InputDecoration(
                     hintText: 'Name producto'
                   ),
@@ -43,6 +44,7 @@ class _CarritoComprasState extends State<CarritoCompras> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                 ),
                 TextFormField(
+                  key: const ValueKey('price_id'),
                   decoration: const InputDecoration(
                     hintText: 'Price product'
                   ),
@@ -51,6 +53,7 @@ class _CarritoComprasState extends State<CarritoCompras> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                 ),
                 TextFormField(
+                  key: const ValueKey('stock_id'),
                   decoration: const InputDecoration(
                     hintText: 'Stock producto'
                   ),
@@ -110,6 +113,7 @@ class _CarritoComprasState extends State<CarritoCompras> {
               children: [
                 Text('id: $id'),
                 TextFormField(
+                  key: const ValueKey('productupdated_id'),
                   decoration: const InputDecoration(
                     hintText: 'Name producto'
                   ),
@@ -119,6 +123,7 @@ class _CarritoComprasState extends State<CarritoCompras> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                 ),
                 TextFormField(
+                  key: const ValueKey('priceupdated_id'),
                   decoration: const InputDecoration(
                     hintText: 'Price product'
                   ),
@@ -128,6 +133,7 @@ class _CarritoComprasState extends State<CarritoCompras> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                 ),
                 TextFormField(
+                  key: const ValueKey('stockupdated_id'),
                   decoration: const InputDecoration(
                     hintText: 'Stock producto'
                   ),
@@ -242,6 +248,7 @@ class _CarritoComprasState extends State<CarritoCompras> {
         title: const Text('Carrito de Compras'),
         actions: [
           IconButton(
+            key: const ValueKey('adicionar_iconB'),
             padding: const EdgeInsets.only( right: 10 ),
             onPressed: () =>alertDialogAdd(),
             icon: const Icon(Icons.add)

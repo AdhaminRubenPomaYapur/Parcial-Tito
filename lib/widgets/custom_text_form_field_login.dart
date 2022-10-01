@@ -31,6 +31,7 @@ class CustomTextFormFieldLogin extends StatelessWidget {
           borderRadius: BorderRadius.circular(16)
         ),
         child: TextFormField(
+          focusNode: FocusNode(),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric( vertical: 20 ),
             border: InputBorder.none,
