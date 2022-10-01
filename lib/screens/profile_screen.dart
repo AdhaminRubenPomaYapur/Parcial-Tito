@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:parcial_flutter_testing/widgets/back_ground_image.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -63,11 +62,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: 60),
                 Card(
-                  color: Color.fromARGB(255, 53, 130, 194),
+                  color: const Color.fromARGB(255, 53, 130, 194),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
                   ),
-                  margin: EdgeInsets.all(30),
+                  margin: const EdgeInsets.all(30),
                   elevation: 10,
                   child: Column(
                     children: [
@@ -85,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           ElevatedButton(
                             onPressed: () {},
-                            child: Text('hola'),
+                            child: const Text('hola'),
                           )
                         ],
                       )
@@ -93,11 +92,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 Card(
-                  color: Color.fromARGB(255, 53, 130, 194),
+                  color: const Color.fromARGB(255, 53, 130, 194),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
                   ),
-                  margin: EdgeInsets.all(30),
+                  margin: const EdgeInsets.all(30),
                   elevation: 10,
                   child: Column(
                     children: [
