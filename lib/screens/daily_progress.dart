@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:parcial_flutter_testing/screens/screens.dart';
 
 class DailyProgressScreen extends StatelessWidget {
   const DailyProgressScreen({Key? key}) : super(key: key);
@@ -22,7 +21,7 @@ class DailyProgressScreen extends StatelessWidget {
               padding: const EdgeInsets.all(20),
               itemCount: 4,
               itemBuilder: (context, index) {
-                return Container(
+                return SizedBox(
                   height: 80,
                   width: 80,
                   child: Card(
