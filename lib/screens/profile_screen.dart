@@ -18,8 +18,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         body: SingleChildScrollView(
       child: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/background.jpg'),
+            image: DecorationImage(
+          image: AssetImage('assets/background.jpg'),
           fit: BoxFit.fill,
         )),
         child: Padding(
@@ -46,6 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ])),
                 const SizedBox(height: 50),
                 MaterialButton(
+                  key: const ValueKey('id_materialButtom'),
                   onPressed: () {
                     Navigator.pushNamed(context, 'carrito');
                   },
