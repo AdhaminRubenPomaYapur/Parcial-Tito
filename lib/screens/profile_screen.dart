@@ -17,8 +17,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         body: SingleChildScrollView(
       child: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/background.jpg'),
+            image: DecorationImage(
+          image: AssetImage('assets/background.jpg'),
           fit: BoxFit.fill,
         )),
         child: Padding(
@@ -83,7 +83,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, 'dailyProgress');
+                            },
                             child: const Text('hola'),
                           )
                         ],
